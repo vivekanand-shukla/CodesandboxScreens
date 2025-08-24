@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Statinory Shop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        <a class="nav-link" href="Products.html">Products</a>
+        <a class="nav-link" href="Report.html">Report</a>
+       
+    </div>
+  </div>
+</nav>
+<div class="container">
+ <h3>stationary Details </h3>
+ <div id="out"> 
+ 
+ </div>
+ </div>
+ <script>
+    const stationary = [
+   {category: "Pens", name: "Ballpoint Pen", price: 6, id: 1, rating: 9.9, details: "Smooth writing experience, perfect for daily use."},
+   {category: "Pencils", name: "Mechanical Pencil", price: 2, id: 2, rating: 7, details: "Retractable tip and refillable lead for convenient use."},
+   {category: "Notebooks", name: "Un-Ruled Notebook", price: 7, id: 3, rating: 8, details: "Smooth off white pages. 200 pages notebook."},
+   {category: "Pens", name: "Gel Pen", price: 2.5, id: 4, rating: 9, details: "Retractable tip and refillable lead for convenient and easy use."},
+   {category: "Pencils", name: "Wooden Pencil", price: 1, id: 5, rating: 7, details: "Bright and vibrant ink, ideal for emphasizing important information."},
+   {category: "Notebooks", name: "Ruled Notebook", price: 9, id: 6, rating: 6, details: "15 ruled lines on each page. Good quality page. 100 pages."},
+   {category: "Notebooks", name: "Drawing Notebook", price: 12, id: 7, rating: 8, details: "Premium quality thick drawing pages. 20 pages."},
+];
+
+let a = new URL(window.location.href); 
+console.log(a)            
+let b = a.searchParams.get("id");            
+console.log(b);
+let arr;
+for(let i=0;i<stationary.length;i++){
+
+    if(stationary[i].id == b){
+          arr = stationary[i]
+    }
+}
+
+let out = document.getElementById("out")
+out.innerHTML = `<div class="card my-2" style="width: 50%;">
+    
+    <div class="card-body">
+     
+      <h4 class="card-text">  ${arr.name}</h4>
+      <p class="card-text"><strong>Catogry</strong> :  ${arr.category}</p>
+      <p class="card-text"><strong>Details</strong> :   ${arr.details}</p>
+      <p class="card-text"><strong>Rating </strong>:   ${arr.rating}</p>
+    
+    </div>
+  </div>`
+
+ </script>
+  </body>
+</html>

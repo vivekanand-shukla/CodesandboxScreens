@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <header class="container">
+      <h1>Random Users</h1>
+      <button id="btn" class="btn btn-primary my-3">Get Random User</button>
+    </header>
+    <main id="output" class="container" >
+
+
+            
+    <script>
+      let btn = document.getElementById('btn')
+      let output = document.getElementById('output')
+      let  url = `https://randomuser.me/api/?results=3`
+      btn.addEventListener('click',function(){
+        output.innerHTML ="Data Loading ..."
+        fetch(url).then(function(e){
+          return e.json()
+        }).then(function(data){
+          if(data){ 
+          output.innerHTML =""
+          for(let i=0;i<data.results.length;i++){
+            let card = document.createElement('div')
+            card.innerHTML = `      <img src="${data.results[i].picture.thumbnail}" alt="">
+      <p>Name : ${data.results[i].name.first}    ${data.results[i].name.last}</p>
+      <p>Email : ${data.results[i].email}</p><br>`
+         
+      output.appendChild(card)
+    }}else{
+      output.innerHTML ="there is no data available"
+    }
+        }).catch(function(e){
+          output.innerHTML ="Server Loads fail ... due to this error"  + e
+        })
+
+      })
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid d-flex">
+          <div>
+            <a class="navbar-brand" href="index.html">Project Management</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="px-5">
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="index.html"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="render.html">Project List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="add.html">Add Project</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <h1 class="my-3">Add Project Details</h1>
+    <form id="formSubmit">
+        <div class="my-2">
+          <label>Project Name : </label>
+          <div class="input-group flex-nowrap">
+            <input type="text" class="form-control" id="name" />
+          </div>
+        </div>
+        <div class="my-3">
+          <label>Project Manager Name : </label>
+          <div class="input-group flex-nowrap">
+            <input type="text" class="form-control" id="Mname" />
+          </div>
+        </div>
+        <div class="my-3">
+          <label>Manager Contact : </label>
+          <div class="input-group flex-nowrap">
+            <input type="number" class="form-control" id="MC" />
+          </div>
+        </div>
+        <div class="my-3">
+          <label>Project Start Date : </label>
+          <div class="input-group flex-nowrap">
+            <input type="date" class="form-control" id="SD" />
+          </div>
+        </div>
+        <div class="my-3">
+          <label>Project End Date : </label>
+          <div class="input-group flex-nowrap">
+            <input type="date" class="form-control" id="ED" />
+          </div>
+        </div>
+
+        <div class="my-3">
+          <div class="mb-3">
+            <label for="dis" class="form-label">Project Discription</label>
+            <textarea class="form-control" id="dis" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="my-3">
+          <label>Clint Name : </label>
+          <div class="input-group flex-nowrap">
+            <input type="text" class="form-control" id="Cname" />
+          </div>
+        </div>
+        <div class="my-3">
+          <label>Clint contact Number : </label>
+          <div class="input-group flex-nowrap">
+            <input type="number" class="form-control" id="CContact" />
+          </div>
+        </div>
+        <div class="my-3">
+          <label>Project Budget : </label>
+          <div class="input-group flex-nowrap">
+            <input type="number" class="form-control" id="Budgt" />
+          </div>
+        </div>
+
+        <label for="filter">project Status : </label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          id="filter"
+        >
+          <option value="In Progress">In Progress</option>
+          <option value="Not Started">Not Started</option>
+          <option value="Completed">Completed</option>
+        </select>
+        <button class="btn btn-primary my-4" type="submit">Add Project</button>
+
+        </form>
+      </section>
+    </main>
+  </body>
+  <script>
+
+    let form =  document.getElementById("formSubmit")
+
+    form.addEventListener("submit" ,function (e){
+         e.preventDefault();
+    let projectNAme  = document.getElementById("name").value
+    let managerName  = document.getElementById("Mname").value
+    let ManagerContact  = document.getElementById("MC").value
+    let StartDtae  = document.getElementById("SD").value
+    let endDate  = document.getElementById("ED").value
+    let disc  = document.getElementById("dis").value
+    let clintName  = document.getElementById("Cname").value
+    let ClintContact  = document.getElementById("CContact").value
+    let Budgt  = document.getElementById("Budgt").value
+    let statusP  = document.getElementById("filter").value
+
+    let url = `https://project-management-backend-student-neog-ca.replit.app/project`
+    let obj ={
+        projectName :projectNAme,
+        projectManagerName:managerName,
+        managerContact:ManagerContact,
+        projectStartDate:StartDtae,
+        projectEndDate:endDate,
+        projectDescription:disc,
+        clientName:clintName,
+        clientContact:ClintContact,
+        projectBudget:Budgt,
+        projectStatus:statusP
+    }
+    fetch(url ,{
+        method:"POST"
+        ,
+       headers:  {
+        "Content-Type": "application/json"
+        },
+
+        body :JSON.stringify(obj)
+    }).then(function(e){
+        return e.json()
+    }).then(function(data){
+
+        if(data){
+        alert("data added sucessufly")
+        }else{
+        alert("data problem occured")
+
+        }
+    }).catch((e)=>{
+        alert("server connection failed")
+    })
+
+
+        
+    })
+  </script>
+</html>

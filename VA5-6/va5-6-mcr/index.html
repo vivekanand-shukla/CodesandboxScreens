@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid d-flex  container">
+          <div>
+            <a class="navbar-brand" href="index.html">Project Management</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="px-5">
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="index.html"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="render.html">Project List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="add.html">Add Project</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="bg-primary text-center text-light  rounded mt-3" style="height: 35vh; width: 100%;">
+        <div class="py-5">
+         <h1 class="display-2" >Project Management Made Easy</h1>
+         <p class="fs-3">Manage projects details with simple Management system</p>
+        </div>
+      </section>
+
+      <section class="text-center my-5">
+        <h1 class="">Project List</h1>
+        <p>View and manage projects in this system</p>
+        <a  href="render.html" class="btn btn-primary">Project List</a>
+      </section>
+      <section class="text-center my-5">
+        <h1 class="">Manage Projects</h1>
+        <p>Add a new projects to the system with their details</p>
+        <a  href="add.html" class="btn btn-primary">Add Project</a>
+      </section>
+
+
+    </main>
+  </body>
+</html>

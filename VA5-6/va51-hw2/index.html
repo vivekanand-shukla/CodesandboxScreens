@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Joke Api -  programming Joke</h1>
+    <button id="btn">Get Programming joke</button>
+    <div id="output"></div>
+    <script>
+      let btn = document.getElementById("btn")
+      let output = document.getElementById("output")
+      let URL =`https://v2.jokeapi.dev/joke/programming?type=single`
+
+      btn .addEventListener('click',function(){
+        fetch(URL).then(function(response){
+          return response.json()
+        }).then(
+          function(data){
+          console.log(data)
+          output.innerHTML =`${data.joke}`
+          }
+        ).catch(function(error){
+          output.innerHTML =`some error occured in fetching the data`
+        })
+      })
+    </script>
+  </body>
+
+</html>

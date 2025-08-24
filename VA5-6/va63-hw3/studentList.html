@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Student Management</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse px-4 justify-content-end"
+            id="navbarText"
+          >
+            <span class="navbar-text">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a
+                    class="text-secondary-emphasis nav-link active"
+                    aria-current="page"
+                    href="index.html"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-secondary-emphasis"
+                    href="studentList.html"
+                    >Student List</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-secondary-emphasis"
+                    href="AddStudentForm.html"
+                    >Add Student</a
+                  >
+                </li>
+              </ul>
+            </span>
+          </div>
+        </div>
+      </nav> 
+
+      <main class="container">
+        <h2 class="pt-3">Student List</h2>
+        <label for="gender">Filter By Gender  : </label>
+        <select  id="gender"  class="form-select">
+            <option value="All">All</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Others</option>
+        </select>
+
+        <section >
+        <div class="loading my-3"></div>
+          <ul class="list-group row my-5"   id="res">
+        </ul>
+        <div class="deleteMsg my-3"></div>
+        </section>
+
+ 
+
+      </main>
+
+
+      <script>
+let url = `https://student-data-student-neog-ca.replit.app/students`
+let res = document.querySelector('#res')
+
+let gender = document.querySelector('#gender')
+let deleteMsg = document.querySelector('.deleteMsg')
+let loading = document.querySelector('.loading')
+let check = null
+function showData(newData) {
+
+  
+  fetch(url).then(function (res) {
+
+    return res.json()
+  }).then(function (data) {
+
+     
+    loading.textContent = 'Loading ...'
+    res.innerHTML = ''
+     loading.textContent = ''
+     if(newData.length<1){
+      loading.textContent = 'No Data Yet'
+    }
+    else if (newData == "NoData" || newData ==data) {
+      check ="NoData"
+      for (let i = 0; i < data.length; i++) {
+        let li = document.createElement('li')
+        li.className ='list-group-item'
+        li.innerHTML = `
+       <div class=" py-4">${data[i].name} - Grade -${data[i].grade} - Age - ${data[i].age} - Attendence - ${data[i].attendance} -Gender - ${data[i].gender} -Marks - ${data[i].marks}    <button id='btnDel' class="btn btn-danger float-end" data-id='${data[i]._id}'>Delete</button> </div>   
+    `
+        res.appendChild(li)
+       
+      }
+    } else if(newData != data){
+      check = newData
+      loading.textContent = ''
+      for (let i = 0; i < newData.length; i++) {
+        let li = document.createElement('li')
+        li.className = `list-group-item`
+        li.innerHTML = `
+       <div class="  py-4">${newData[i].name} - Grade -${newData[i].grade} - Age - ${newData[i].age} - Attendence - ${newData[i].attendance} -Gender - ${newData[i].gender} -Marks - ${newData[i].marks}    <button id='btnDel' class="btn btn-danger float-end" data-id='${newData[i]._id}'>Delete</button> </div>   
+    `
+        res.appendChild(li)
+       
+      }
+    } 
+    let delBtn = document.querySelectorAll('#btnDel')
+
+    for (let i = 0; i < delBtn.length; i++) {
+      delBtn[i].addEventListener('click', function (e) {
+        let dataId = e.target.getAttribute('data-id')
+
+        fetch(`${url}/${dataId}`, {
+          method: "DELETE"
+
+        }).then(function (res) {
+          return res.json()
+        }).then(function (e) {
+          deleteMsg.textContent = `Deleted Sucessfully`
+          deleteMsg.style.color = 'green'
+          loading.textContent = ''
+          showData("NoData") // specially here
+
+        })
+
+      })
+    }
+
+  })
+
+}; 
+
+showData("NoData")
+
+gender.addEventListener('change', function (e) {
+
+  let gender = e.target.value
+  fetch(url).then(function (res) {
+
+    return res.json()
+  }).then(function (data) {
+
+    let arr = []
+    if(gender!="All"){
+
+    
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].gender === gender) {
+        arr.push(data[i])
+      }
+    }
+    showData(arr)
+  }else{
+    showData(data)
+  }
+  })
+
+})
+
+      </script>
+</body>
+</html>

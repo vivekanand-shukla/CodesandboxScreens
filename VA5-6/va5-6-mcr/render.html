@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid d-flex">
+          <div>
+            <a class="navbar-brand" href="index.html">Project Management</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="px-5">
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="index.html"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="render.html">Project List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="add.html">Add Project</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="my-4">
+         <h1 class="mb-4">Project List </h1>
+         <label for="filter">Filter By project Status : </label>
+         <select class="form-select" aria-label="Default select example" id="filter">
+            <option value="all" selected>All</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Not Started">Not Started</option>
+            <option value="Completed">Completed</option>
+          </select>
+      </section>
+      <section class="my-4">
+        <ul class="list-group" id="output">
+          <li class="list-group-item d-flex justify-content-between">
+            <div>
+              <p><strong>Walmart are plus</strong></p> 
+              <p><strong>Project Status : </strong> In progress</p> 
+              <p><strong>Start date : </strong>2023</p> 
+              <p><strong>End date : </strong>2023</p> 
+              <p><strong>Budget : </strong>Rs 6000 </p> 
+            </div>
+            <div class="d-flex align-items-end">
+              <div>
+                <a href="" class="btn btn-danger">Delete</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+  <script>
+    let url = `https://project-management-backend-student-neog-ca.replit.app/project`
+    let optput = document.getElementById("output")
+    let filter = document.getElementById("filter")
+    let datas = []
+ function fetchTheData(){
+
+  fetch(url).then(function(e){
+      return e.json()
+    }).then(function(data){
+      console.log(data)
+      Render(data)
+      datas = data
+    })
+
+ }
+ fetchTheData()
+    
+    //render
+    function Render(data){
+      optput.innerHTML = ""
+      for(let i = 0; i < data.length; i++){
+        let html = document.createElement('div')
+        html.innerHTML = `<li class="list-group-item  d-flex justify-content-between">
+          <div>
+            <p><strong>${data[i].projectName}</strong></p> 
+            <p><strong>Project Status : </strong> ${data[i].projectStatus}</p> 
+            <p><strong>Start date : </strong>${data[i].projectStartDate}</p> 
+            <p><strong>End date : </strong>${data[i].projectEndDate}</p> 
+            <p><strong>Budget : </strong>Rs ${data[i].projectBudget} </p> 
+          </div>
+          <div class="d-flex align-items-end">
+            <div>
+              <button data-id=${data[i]._id}  class="btn btn-danger delete">Delete</button>
+            </div>
+          </div>
+        </li>`
+        optput.appendChild(html)
+      }
+
+      const deleteBtn = document.querySelectorAll(".delete")
+      for(let i=0;i<deleteBtn.length;i++){
+        deleteBtn[i].addEventListener("click",function(e){
+       let a = e.target.getAttribute("data-id");
+        
+       fetch(`${url}/${a}` , { method: 'DELETE' }).then(function(e){
+      return e.json()
+    }).then(function(data){
+      if(data){
+              alert('Deleted!');
+              fetchTheData()
+            
+             }else{
+                alert('unsuccessful!')
+             }
+
+    })
+       
+      })
+        
+      }
+    }
+
+    //filter
+    filter.addEventListener('change', function(){
+      let f = filter.value
+      if(f === "all"){
+        Render(datas)
+      } else {
+        let arr = []
+        for(let i = 0; i < datas.length; i++){
+          if(f === datas[i].projectStatus){
+            arr.push(datas[i])        
+          }
+        }
+        Render(arr)
+      }
+    })
+  </script>
+</html>

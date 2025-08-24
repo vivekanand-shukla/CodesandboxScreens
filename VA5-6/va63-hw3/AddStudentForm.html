@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Student Management</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse px-4 justify-content-end"
+            id="navbarText"
+          >
+            <span class="navbar-text">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a
+                    class="text-secondary-emphasis nav-link active"
+                    aria-current="page"
+                    href="index.html"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-secondary-emphasis"
+                    href="studentList.html"
+                    >Student List</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-secondary-emphasis"
+                    href="AddStudentForm.html"
+                    >Add Student</a
+                  >
+                </li>
+              </ul>
+            </span>
+          </div>
+        </div>
+      </nav> 
+      <main class="container">
+        <h1 class="my-4">Add Student</h1>
+        <form id="form">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name : </label>
+          <input type="text" class="form-control" id="name" >
+        </div>
+        <div class="mb-3">
+          <label for="Age" class="form-label">Age : </label>
+          <input type="number" class="form-control" id="Age" >
+        </div>
+        <label for="gender">Gender : </label>
+        <select name="" id="gender">
+          <option value="Other">Other</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select><br><br>
+        
+        <div class="mb-3">
+          <label for="grade" class="form-label">Grade : </label>
+          <input type="text" class="form-control" id="grade" >
+        </div>
+        <div class="mb-3">
+          <label for="Marks" class="form-label">Marks : </label>
+          <input type="number" class="form-control" id="Marks" >
+        </div>
+        <div class="mb-3">
+          <label for="Attendence" class="form-label">Attendence : </label>
+          <input type="number" class="form-control" id="Attendence" >
+        </div>
+
+        <button id="add" class="btn btn-primary">Add Submit</button>
+
+      </form>
+      <div id="res"></div>
+      </main>
+      <script>
+      const form = document.getElementById('form');
+      const name = document.getElementById('name');
+      const age = document.getElementById('Age');
+      const gender = document.getElementById('gender');
+      const grade = document.getElementById('grade');
+      const marks = document.getElementById('Marks');
+      const attendence = document.getElementById('Attendence');
+      const res = document.getElementById('res');
+      const url = `https://student-data-student-neog-ca.replit.app/students`
+      form.addEventListener('submit', function(e) {
+      e.preventDefault(); 
+     
+
+      const studentData = {
+    name: name.value,
+    age: age.value,
+    gender: gender.value,
+    grade: grade.value,
+    marks: marks.value,
+    attendance: attendence.value
+  };
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(studentData),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(function(response) {
+   
+    return response.json();
+  })
+  .then(function(data) {
+   if(data){
+    res.innerHTML = `data added Sucessfully`
+    res.style.color = 'green'
+   }else {
+    res.innerHTML = `Error occured in Loading data`
+    res.style.color = 'red'
+    
+   }
+   
+ })
+  .catch(error => {
+    
+    res.innerHTML = `Server conncetion Failed`
+    res.style.color = 'red'
+    
+  });
+
+    });
+      </script>
+</body>
+</html>
