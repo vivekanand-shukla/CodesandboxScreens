@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <label for="a">Filter By Status :   </label>
+     <select name="" id="a">
+      <option value="all">ALL</option>
+      <option value="Todo">Todo</option>
+      <option value="inProgress">in Progress</option>
+      <option value="Completed">Completed</option>
+  
+     </select>
+
+  <ul id="output"></ul>
+  <body>
+   <script>
+    const obj =[
+      {id:1,Title:"Task 1" ,Status:"Todo"},
+      {id:2,Title:"Task 2" ,Status:"inProgress"},
+      {id:3,Title:"Task 3" ,Status:"Completed"},
+      {id:4,Title:"Task 4" ,Status:"Todo"},
+      
+    ]
+    let output = document.querySelector("#output")
+    const a = document.querySelector("#a")
+    function render(ab){
+let renderValues =(ab==="all")? obj :  obj.filter(e => e.Status === ab)
+    
+    let HTML =renderValues.map(e =>  `<li>
+<strong>ID : </strong>${e.id}<br>
+<strong>Title : </strong>${e.Title}<br>
+<strong>Status : </strong>${e.Status}<br>
+
+<hr>
+</li>`)
+output.innerHTML = HTML.join(" ")
+}
+render("all")
+  
+ a.addEventListener('change' , ()=>{
+  let b = a.value
+  render(b)
+ })
+   
+
+   </script>
+  </body>
+
+</html>

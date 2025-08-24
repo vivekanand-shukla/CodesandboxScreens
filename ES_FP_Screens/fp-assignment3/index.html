@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HTML +CSS</title>
+</head>
+<body>
+
+  <h2>Expense List</h2>
+
+  <label>
+    <input type="checkbox" id="filterCheckbox" />
+    Expense more than $100
+  </label>
+
+  <br /><br />
+
+  <div id="expenseList"></div>
+
+  <p><strong>Total Expenses: $<span id="totalAmount">0.00</span></strong></p>
+
+  <script>
+    const expenses = [
+      { id: 1, name: "Groceries", amount: 150 },
+      { id: 2, name: "Utilities", amount: 80 },
+      { id: 3, name: "Dining Out", amount: 120 },
+      { id: 4, name: "Transportation", amount: 50 }
+    ];
+
+    const expenseList = document.getElementById("expenseList");
+    const totalAmountSpan = document.getElementById("totalAmount");
+    const filterCheckbox = document.getElementById("filterCheckbox");
+
+    function render(data) {
+      // Clear previous
+      expenseList.innerHTML = "";
+
+      data.map((i) => {
+        expenseList.innerHTML += `
+         
+          <li>
+            <strong> Expense: </strong>${i.name}<br />
+             <strong>Amount:</strong> $${i.amount}
+      
+          </li>
+          <hr />
+        `;
+      });
+
+      const total = data.reduce((a, c) => a+ c.amount, 0);
+      totalAmountSpan.textContent = total.toFixed(2);
+    }
+
+ 
+    render(expenses);
+
+  
+    filterCheckbox.addEventListener("change", () => {
+      const f= filterCheckbox.checked
+    const p =   f ? expenses.filter(i => i.amount > 100)
+        : expenses;
+
+      render(p);
+    });
+  </script>
+
+</body>
+</html>

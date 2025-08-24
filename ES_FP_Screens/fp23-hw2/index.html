@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <label for="ab">
+      <input type="checkbox" id="ab" />
+      show employees with more then five years of Experience
+    </label>
+    <ul id="output"></ul>
+
+    <script>
+      let output = document.getElementById("output");
+      let ab = document.getElementById("ab");
+
+      const employeeData = [
+        { id: 1, name: "Alice", experienceInYears: 2 },
+
+        { id: 2, name: "Bob", experienceInYears: 9 },
+
+        { id: 3, name: "Charlie", experienceInYears: 4 },
+
+        { id: 4, name: "John", experienceInYears: 19 },
+      ];
+
+      function render(a) {
+        let c = a
+          ? employeeData.filter((e) => e.experienceInYears > 5)
+          : employeeData;
+
+        const HtML = c.map(
+          (e) => ` <li>
+<strong>ID : </strong>${e.id}<br>
+<strong>Name : </strong>${e.name}<br>
+<strong>Experience : </strong>${e.experienceInYears}<br>
+
+<hr>
+</li>`
+        );
+        output.innerHTML = HtML.join(" ");
+      }
+      render(false);
+      ab.addEventListener("click", (e) => render(e.target.checked));
+    </script>
+  </body>
+</html>

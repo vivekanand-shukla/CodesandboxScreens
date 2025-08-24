@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+     <label for="">
+      <label for="status"><input type="radio" name="status" id="status" value="all"> All Items </label>
+      <label for="status"><input type="radio" name="status" id="status" value="In Sale"> In Sale</label>
+      <label for="status"><input type="radio" name="status" id="status" value="New Release"> New Release</label>
+     </label>
+    <ul id="output"></ul>
+
+   <script>
+    const items = [
+
+{ id: 1, item: "Item 1", status: "In Sale" },
+
+{ id: 2, item: "Item 2", status: "New Release" },
+
+{ id: 3, item: "Item 3", status: "New Release" },
+
+{ id: 4, item: "Item 4", status: "In Sale" },
+
+{ id: 5, item: "Item 5", status: "In Sale" }
+
+]
+render("all")
+const status = document.getElementsByName("status")
+status.forEach(e => {
+  e.addEventListener('change' , function(){
+         render(this.value)
+  })
+});
+function render(filter){
+const filterValue = filter==="all"? items : items.filter(e => e.status ===filter)
+
+let a = filterValue.map(a=> `
+<li>
+          <strong>ID:</strong> ${a.id} <br>
+          <strong>Task:</strong> ${a.item} <br>
+          <strong>Status:</strong> ${a.status} <br><hr>
+        </li>`)
+
+        let output =document.getElementById('output')
+        let status
+        output.innerHTML = a.join(" ")
+      }
+   </script>
+  </body>
+</html>

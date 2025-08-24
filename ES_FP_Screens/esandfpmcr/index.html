@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+  
+  </head>
+  <body>
+    <h1>My product inventory </h1>
+    <input type="checkbox" id="a">
+    <label for="a">show expensive product with black color
+    </label>
+    <div id="output">
+
+
+    </div>
+    <script>
+      const products = [
+      {id: 1, name: "Laptop", price: 24000, color: "red"},
+      {id: 2, name: "Smartphone", price: 17000, color: "black"},
+      {id: 3, name: "Tablet", price: 4500, color: "silver"},
+      {id: 4, name: "Headphones", price: 5000, color: "black"},
+      {id: 5, name: "Speaker", price: 10000, color: "silver"},
+      {id: 6, name: "TV", price: 15000, color: "black"},
+      {id: 7, name: "Earphones", price: 3000, color: "white"},
+      {id: 8, name: "Smartwatch", price: 25000, color: "black"},
+    ];
+
+
+    let output = document.getElementById("output")
+    let a = document.getElementById("a")
+
+    function Rander(products){
+      output.innerHTML =""
+     const ul = document.createElement("ul")
+      ul.innerHTML=  products.map(p => `<li>
+      
+      <strong>Name : </strong>${p.name} <br>
+      <strong>Price :       </strong>${p.price} <br>
+      <strong>color :       </strong>${p.color} <br>
+      <hr/>
+      </li>`)
+
+      const toatlPrice = products.reduce((a,c) => a=a+c.price , 0)
+      
+     const div = document.createElement("div")
+     div.innerHTML= `<p> <strong>Total Product : </strong>${products.length} <br> </p> 
+       <p> <strong>Total inventory Cost  : </strong>$ ${toatlPrice} <br> </p>
+     `
+      output.appendChild(ul)
+      output.appendChild(div)
+     
+
+
+    }
+    Rander(products) 
+  a.addEventListener('change' ,function(){
+
+    let filter = a.checked ?products.filter(p => p.color === "black" &&  p.price > 5000 ):products
+    Rander(filter) 
+
+
+  })
+  
+
+
+    </script>
+  </body>
+</html>

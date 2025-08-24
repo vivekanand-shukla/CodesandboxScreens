@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>movies</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>movie List</h1>
+  <ul id="moviesList"></ul>
+  <p >Average Rating : <span id="avgRating">0</span></p>
+ 
+  </body>
+  <script>
+    const movies =[
+      {id:1,title:"Movie 1" ,rating:4.5},
+      {id:2,title:"Movie 2" ,rating:3.8},
+      {id:3,title:"Movie 3" ,rating:4.2},
+      {id:4,title:"Movie 4" ,rating:3.5},
+    ]
+
+    const movieListContainer =document.querySelector("#moviesList")
+    const averageRatingContainer =  document.querySelector("#avgRating")
+    const movieList = movies.reduce((a,c)=>{
+       a.totalRating = a.totalRating +c.rating
+       //display the movie list 
+       const listItem = document.createElement("li")
+       listItem.textContent =`${c.title} - Rating :${c.rating}`
+       movieListContainer.appendChild(listItem)
+       return a;
+    },{totalRating :0 })
+  const averageRating =movieList.totalRating /movies.length
+ averageRatingContainer.textContent = averageRating
+  </script>
+</html>
