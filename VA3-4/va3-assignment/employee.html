@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Companny Employees</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <header class="bg-dark text-light text-center py-3">
+  
+      <h1>List of Employees</h1>
+    </header>
+    <main class="container mt-4">
+      <section>
+        <label for="depfil">Filter by Department :</label>
+        <select class="form-select" id="depfil" >
+             
+          <option value="all">All Department</option>
+          <option value="IT">IT</option>
+          <option value="Design">Design</option>
+          <option value="Management">Management</option>
+        </select>
+      </section>
+      <section ">
+        <h2>Add Employee</h2>
+        <label for="name">Name : </label>
+        <div class="input-group mb-3">
+
+        <input type="text" id="name" class="form-control" >
+      </div><br>
+      
+        <label for="title">Title : </label>
+        <div class="input-group mb-3">
+
+        <input type="text" id="title" class="form-control" >
+      </div><br>
+      
+       
+        
+        <section>
+          <label for="department">Department :</label>
+          <select class="form-select" id="department" >
+            
+            <option value="IT">IT</option>
+            <option value="Design">Design</option>
+            <option value="Management">Management</option>
+          </select>
+        </section><br>
+      <button id="addEmp" class="btn btn-primary">Add Employee</button>
+      
+    </section><br>
+
+  
+
+      <ul class="list-group" id="output" >
+     
+      </ul>
+    </main>
+    <script>
+      // task 0 db 
+      let employees = [
+        {
+          id: 1,
+          name: "john Doe",
+          title: "Software Developer ",
+          Department: "IT",
+        },
+        { id: 2, name: "jame Smith", title: "Desiner", Department: "Design" },
+        {
+          id: 3,
+          name: "Bob johnson",
+          title: "Project Manager ",
+          Department: "Management",
+        },
+      ];
+     let  addEmp = document.getElementById("addEmp")
+      let output = document.getElementById("output")
+      // task 1 show
+      
+      function show(employees){
+
+        output.innerHTML=""
+    
+        for(let i =0;i<employees.length;i++){
+
+             let li =document.createElement("li")
+             li.className = `list-group-item  d-flex justify-content-between align-items-center`
+        
+             let div=    document.createElement("div")
+          div.innerHTML =`<h5>${employees[i].name}</h5>
+          <p>${employees[i].title}</p>`
+          
+          let a=    document.createElement("a")
+          a.className = `btn btn-link`
+          a.href = `employeeDetail.html?id=${employees[i].id}`
+          a.textContent ='View Details '
+          
+          li.appendChild(div)
+          li.appendChild(a)
+          output.appendChild(li)
+
+        }
+      }
+      addEmp.addEventListener("click" , addEmployee) 
+      document.getElementById("depfil").addEventListener("change", filter);
+
+         show(employees)
+
+
+         function addEmployee(){
+
+          let Name =  document.getElementById("name").value
+          let Title =  document.getElementById("title").value
+          let Department =  document.getElementById("department").value
+          let newId = employees.length+1
+
+          let obj={
+            id: newId,
+          name: Name,
+          title: Title,
+          Department:Department,
+          }
+          employees.push(obj)
+          show(employees)
+         }
+  function filter(){
+
+
+    let depfil =document.getElementById("depfil")
+  if(depfil.value ==="all"){
+    show(employees)
+  }else if(depfil.value !="all"){
+    let arr =[]
+    for(let i=0;i<employees.length;i++){
+    if(employees[i].Department ==depfil.value ){
+
+      arr.push(employees[i])
+    }
+    
+    }
+    show(arr)
+
+
+  }
+  }
+  
+  </script>
+
+  </body>
+</html>
