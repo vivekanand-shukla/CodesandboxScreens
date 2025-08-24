@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+     <h2><strong>User  Waitlist form </strong></h2>
+     <!-- task 1 -->
+     <form id="form">
+     <label for="name"><strong>Full Name : </strong></label>
+     <input type="text" id="name"><br><br>
+    <!-- task 2 -->
+    <label for="phone"><strong>phone number :</strong> </label>
+    <input type="number" id="phone"><br><br>
+    <!-- task 3  -->
+    <label for="email"><strong>Email Id:</strong> </label>
+    <input type="email" id="email">
+    <br><br>
+    <!-- task 4 -->
+    <label "><strong>Gender :</strong></label><br>
+    <label  for="Male"> <input type="radio" name="gender" value="male" id="Male">Male</label><br>
+    <label for="Female" >   <input type="radio" name="gender" value="Female" id="Female">Female</label><br>
+      <label for="other" >  <input type="radio" name="gender" value="other" id="other">other</label><br>
+      <br>
+<!-- task 5 -->
+<label ><strong>Are you a collage Graduate  :</strong></label><br>
+<label  for="yes"> <input type="radio" name="clg" value="yes" id="yes">yes</label><br>
+<label for="No" >   <input type="radio" name="clg" value="No" id="No">No</label><br>
+  <label for="Dropout" >  <input type="radio" name="clg" value="Dropout" id="Dropout">Dropout</label><br>
+  <br>
+  <!-- task 6  -->
+  <label for=""><strong>Are you working anyWhere full time or Part Time :</strong> </label> <br>
+<select name="" id="time">
+  <option value="Working full time">Working full time</option>
+  <option value="Working part time">Working part time</option>
+  <option value="Not Working Anywhere">Not Working Anywhere</option>
+</select><br><br>
+<!-- task 7 -->
+<label for="web"><strong>Why do you want to learn web developement :</strong> </label><br>
+<textarea name="" id="web" rows="5" cols="50"></textarea>
+<!-- task 8 -->
+<br><br>
+<label for=""><strong> How did you come to know about us :</strong></label><br>
+<label for="you tube"><input type="checkbox"  name = "know" value="you tube" id="you tube">you tube</label><br>
+<label for="instagram"><input type="checkbox"   name = "know" value="instagram" id="instagram" >instagram</label><br>
+<label for="Linkedin"><input type="checkbox"  name = "know" value="Linkedin"  id="Linkedin"  >Linkedin</label><br>
+<label for="twitter"><input type="checkbox"  name = "know" value="twitter"  id="twitter"  >twitter</label><br>
+<label for="family and friends"><input type="checkbox"  name = "know" value="family and friends"  id="family and friends"  >family and friends</label><br>
+<label for="others"><input type="checkbox"  name = "know" value="others"  id="others"  >others</label><br><br><br>
+
+<!-- task 10  -->
+<label for="i"><input type="checkbox"  name = "terms" value="i confirm that all information in this form is actually true" id="i ">    <strong>    i confirm that all information in this form is actually true </strong></label><br>
+<br><br>
+<!-- task 11  -->
+<input type="submit" value="submit Details">
+
+</form> 
+<div id="formResult"></div>
+<script>
+  let form = document.getElementById("form");
+
+  form.addEventListener('submit', function(){
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let email = document.getElementById("email").value;
+
+    let gender = document.querySelector('input[name="gender"]:checked').value;
+
+   
+    let clg = document.querySelector('input[name="clg"]:checked').value;
+
+   
+    let time = document.getElementById("time").value;
+
+    
+    let web = document.getElementById("web").value;
+
+   
+    let know = document.querySelectorAll('input[name="know"]:checked')
+        let arr =[]     
+        for(let i=0;i<know.length;i++) {
+          arr.push(know[i].value)
+        }     
+
+
+    let terms = document.querySelector('input[name="terms"]:checked').value;
+    
+    
+    const userInputvalues =`<h2><strong>Detailed Submitted :</strong></h2>
+      <p><strong>Name :</strong> ${name}</p>
+      <p><strong>Phone Number :</strong> ${phone}</p>
+      <p><strong>Email id :</strong>: ${email}</p>
+      <p><strong>Gender :</strong> ${gender}</p>
+      <p><strong>Are you a collage graduate : </strong> ${clg}</p>
+      <p><strong>Are you  working with full time or part time :</strong> ${time}</p>
+      <p><strong>Why do you want to learn web devlopment ? :</strong> ${web}</p>
+      <p><strong>How do you come to know about us ? :</strong> ${arr.join(",  ")}</p>
+     
+
+      
+      `
+
+
+
+    const divElement = document.getElementById("formResult")
+    divElement.innerHTML = userInputvalues
+  });
+</script>
+
+  </body>
+</html>

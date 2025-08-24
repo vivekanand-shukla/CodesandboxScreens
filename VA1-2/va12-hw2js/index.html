@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <label for="country">Enter your country : </label>
+    <input type="text" id="country">
+    <button id="countryBtn">Display Country</button>
+    <p id="countryOutput"></p>
+    
+    <label for="website">Enter a website name : </label>
+    <input type="text" id="website">
+    <button id="websiteBtn">Display Heading</button>
+    <h1 id="websiteOutput"></h1>
+
+    <label for="student">Are you student? : </label>
+    <input type="text" id="student">
+    <button id="studentBtn">Display Response</button>
+    <p id="studentOutput"></p>
+
+    <label for="Age">Enter your age : </label>
+    <input type="text" id="Age">
+    <button id="AgeBtn">check age</button>
+    <p id="AgeOutput"></p>
+
+<script>
+  // task1
+let country = document.getElementById("country")
+let countryBtn = document.getElementById("countryBtn")
+let countryOutput = document.getElementById("countryOutput")
+
+countryBtn.addEventListener('click', function(){
+  let a =  country.value
+  countryOutput.textContent = `your country is :${a} `
+  
+})
+
+
+// task2
+let website = document.getElementById("website")
+let websiteBtn = document.getElementById("websiteBtn")
+let websiteOutput = document.getElementById("websiteOutput")
+
+websiteBtn.addEventListener('click', function(){
+  let a =  website.value
+  websiteOutput.textContent = a
+})
+// task3
+let student = document.getElementById("student")
+let studentBtn = document.getElementById("studentBtn")
+let studentOutput = document.getElementById("studentOutput")
+
+studentBtn.addEventListener('click', function(){
+  let a =  student.value
+  if(a=="Yes"|| a== "YES"|| a== "yes"){
+
+    studentOutput.textContent = "you are a student"
+  }else if(a=="No"|| a== "NO"|| a== "no"){
+    studentOutput.textContent = "you are not a student"
+    
+  }else
+  {
+    studentOutput.textContent = "you Entred wrong value"
+
+  }
+})
+  // task4
+let Age = document.getElementById("Age")
+let AgeBtn = document.getElementById("AgeBtn")
+let AgeOutput = document.getElementById("AgeOutput")
+
+AgeBtn.addEventListener('click', function(){
+  let a =  Age.value
+
+  if(a>18){
+
+    AgeOutput.textContent = `you are adult`
+  }else if(a<19){
+    AgeOutput.textContent = `you are a minor`
+
+  }
+})
+</script>
+  </body>
+</html>

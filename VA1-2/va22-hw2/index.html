@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- task 1  -->
+    <label for="">Program 1 :  Select a mood : </label>
+    <input type="radio" name="mood" value="Happy" >Happy
+    <input type="radio" name="mood" value="sad" >sad
+    <input type="radio" name="mood" value="Excited" >Excited
+    <p id="moodRes"></p>
+    <!-- task 2  -->
+    <label for="">Program 2 :  Choose a book genere : </label>
+    <input type="radio" name="book" value="mystery" >mystery
+    <input type="radio" name="book" value="Romance" >Romance
+    <input type="radio" name="book" value="Science friction" >Science friction
+    <button id="bookBtn">Display Book Recommendation</button>
+    <p id="bookRes"></p>
+
+    <!-- task 3  -->
+    <label for="">Program 3 : Select a clothing Style : </label> 
+    <input type="radio" name="cloths" value="Casual">Casual 
+    <input type="radio" name="cloths" value="Formal">Formal 
+    <input type="radio" name="cloths" value="Sporty">Sporty 
+    <button id="clothsBtn">Display Selected Style </button>
+    <p id="clothsRes" ></p>
+  </body>
+  <!-- task 4  -->
+  <label for="">Program 4 : Choose a weather preference</label>
+  <input type="radio" name="weather" value="Sunny">Sunny
+  <input type="radio" name="weather" value="Rainy">Rainy
+  <input type="radio" name="weather" value="snowey">snowey
+  <button id="weatherBtn"> Display weather preference</button>
+  <p id="weatherRes"></p>
+  <!-- task 5 -->
+  <label for="">Program 5 :  Select a travel mode : </label>
+  <input type="radio" name="travel" value="Car" >Car
+  <input type="radio" name="travel" value="Train" >Train
+  <input type="radio" name="travel" value="Plane" >Plane
+  <p id="travelRes"></p>
+  <script>
+//task 1 
+let mood = document.getElementsByName("mood")
+let moodRes = document.getElementById("moodRes")
+
+for(let i= 0;i<mood.length;i++){
+  mood[i].addEventListener('change' ,function(){
+    let moodValue = document.querySelector('input[name="mood"]:checked').value
+  //  console.log(moodValue)
+   moodRes.textContent = `selected mood is ${moodValue}`
+  })
+}
+// task 2
+let book = document.getElementsByName("book")
+    let bookRes = document.getElementById("bookRes")
+    let bookBtn = document.getElementById("bookBtn")
+    bookBtn.addEventListener('click',function(){
+      let selectedBook = document.querySelector('input[name="book"]:checked')
+      // console.log(selectedBook)
+      if (selectedBook) {
+  bookRes.textContent = `Book recommendation for ${selectedBook.value} genre.`;
+} else {
+  bookRes.textContent = `Please select at least one book genre.`;
+}
+    })
+
+
+    // task 3 
+    let clothsInputs = document.getElementsByName("cloths") 
+  let clothsRes = document.getElementById("clothsRes")
+  let clothsBtn = document.getElementById("clothsBtn")
+  clothsBtn.addEventListener('click',function(){
+    
+  let selectedcloths = document.querySelector('input[name="cloths"]:checked')
+  if(selectedcloths){
+
+    clothsRes.textContent =`Selectd cloth style : ${selectedcloths.value}`
+  }else {
+
+    clothsRes.textContent =`Please select a clothing Style`
+  }
+  })
+  // task 4 
+    let weatherInputs = document.getElementsByName("weather") 
+  let weatherRes = document.getElementById("weatherRes")
+  let weatherBtn = document.getElementById("weatherBtn")
+  weatherBtn.addEventListener('click',function(){
+    
+  let selectedweather = document.querySelector('input[name="weather"]:checked')
+  if(selectedweather){
+
+    weatherRes.textContent =`Selectd Weather preference : ${selectedweather.value}`
+  }else {
+
+    weatherRes.textContent =`Please select alteast on weather preference`
+  }
+  })
+  // task 5 
+  let travel = document.getElementsByName("travel")
+let travelRes = document.getElementById("travelRes")
+
+for(let i= 0;i<travel.length;i++){
+  travel[i].addEventListener('change' ,function(){
+    let travelValue = document.querySelector('input[name="travel"]:checked').value
+  //  console.log(moodValue)
+   travelRes.textContent = `selected travel mode is ${travelValue}`
+  })
+}
+  </script>
+</html>

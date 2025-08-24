@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- task 1 -->
+    <label>Program 1 : Select multiple Sports : </label>
+    <input type="checkbox" name="sports" value="Soccer" />Soccer
+    <input type="checkbox" name="sports" value="Basketball" />Basketball
+    <input type="checkbox" name="sports" value="Tennis" />Tennis
+    <button id="sportsBtn">Display Selected Sports</button>
+    <p id="sportsRes"></p>
+    <!-- task 2 -->
+    <label for="">Program 2 : Choose Multipe Voccation Destination : </label>
+    <input type="checkBox" name="Voccation" value="Beach" />Beatch
+    <input type="checkBox" name="Voccation" value="Mountain" />Mountain
+    <input type="checkBox" name="Voccation" value="City" />City
+    <button id="VoccationBtn">Display Selected Destinations</button>
+    <p id="VoccationRes"></p>
+    <!-- task 3 -->
+    <label for="">Program 3 : Select Multiple Movie Generes : </label>
+    <input type="checkbox" name="movie" value="Action" />Action
+    <input type="checkbox" name="movie" value="Comady" />Comady
+    <input type="checkbox" name="movie" value="Drama" />Drama
+    <button id="movieBtn">Display Selected Genere</button>
+    <p id="movieRes"></p>
+    <!-- task 4 -->
+    <label for=""
+      >Program 4 : Select Multiple item from restorent manue :
+    </label>
+    <input type="checkBox" name="food" value="Burger" />Burger
+    <input type="checkBox" name="food" value="Pizza" />Pizza
+    <input type="checkBox" name="food" value="Salad" />Salad
+    <button id="foodBtn">Display Selected items</button>
+    <p id="foodRes"></p>
+    <!-- task 5 -->
+    <label for="">Program 5 : Select Multiple fruits : </label>
+    <input type="checkbox" name="fruits" value="Apple" />Apple
+    <input type="checkbox" name="fruits" value="Banana" />Banana
+    <input type="checkbox" name="fruits" value="Orange" />Orange
+    <button id="fruitsBtn">Display Selected Friuts :</button>
+    <p id="fruitsRes"></p>
+
+    <script>
+      // task 1
+      let sports = document.getElementsByName("sports");
+      let sportsBtn = document.getElementById("sportsBtn");
+      let sportsRes = document.getElementById("sportsRes");
+
+      sportsBtn.addEventListener("click", function () {
+        let resultArr = [];
+        for (let j = 0; j < sports.length; j++) {
+          if (sports[j].checked) {
+            resultArr.push(sports[j].value);
+          }
+        }
+        sportsRes.textContent = `selected sports : ${resultArr.join(" ,  ")}`;
+      });
+
+      // task 2
+      let Voccation = document.getElementsByName("Voccation");
+      let VoccationBtn = document.getElementById("VoccationBtn");
+      let VoccationRes = document.getElementById("VoccationRes");
+
+      VoccationBtn.addEventListener("click", function () {
+        let resultArr = [];
+        for (let j = 0; j < Voccation.length; j++) {
+          if (Voccation[j].checked) {
+            resultArr.push(Voccation[j].value);
+          }
+        }
+        VoccationRes.textContent = `selected Destination : ${resultArr.join(
+          " ,  "
+        )}`;
+      });
+
+      // task 3
+      let movie = document.getElementsByName("movie");
+      let movieBtn = document.getElementById("movieBtn");
+      let movieRes = document.getElementById("movieRes");
+
+      movieBtn.addEventListener("click", function () {
+        let resultArr = [];
+        for (let j = 0; j < movie.length; j++) {
+          if (movie[j].checked) {
+            resultArr.push(movie[j].value);
+          }
+        }
+        movieRes.textContent = `selected movie Genere : ${resultArr.join(
+          " ,  "
+        )}`;
+      });
+
+      // task 4
+      let food = document.getElementsByName("food");
+      let foodBtn = document.getElementById("foodBtn");
+      let foodRes = document.getElementById("foodRes");
+
+      foodBtn.addEventListener("click", function () {
+        let resultArr = [];
+        for (let j = 0; j < food.length; j++) {
+          if (food[j].checked) {
+            resultArr.push(food[j].value);
+          }
+        }
+        foodRes.textContent = `selected menue item : ${resultArr.join(" ,  ")}`;
+      });
+
+      // task 5
+      let fruits = document.getElementsByName("fruits");
+      let fruitsBtn = document.getElementById("fruitsBtn");
+      let fruitsRes = document.getElementById("fruitsRes");
+      fruitsBtn.addEventListener("click", function () {
+        let resultArr = [];
+        for (let j = 0; j < fruits.length; j++) {
+          if (fruits[j].checked) {
+            resultArr.push(fruits[j].value);
+          }
+        }
+        fruitsRes.textContent = `selected fruits : ${resultArr.join(" ,  ")}`;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <label for="BookList">Enter your Favourite book list : </label>
+    <textarea rows="4" cols="50" id="BookList"></textarea>
+    <button id="BookListBtn">Display Book list</button>
+    <p id="BookListResult"></p>
+
+    
+    <label for="recipie">Enter a recipie : </label>
+    <textarea rows="4" cols="50" id="recipie"></textarea>
+    <button id="recipieBtn">Display recipie</button>
+    <p id="recipieResult"></p>
+    
+    <label for="bio">Enter a Bio : </label>
+    <textarea rows="4" cols="50" id="bio"></textarea>
+    <button id="bioBtn">Display Boio</button>
+    <p id="bioResult"></p>
+    
+    <label for="goals">Enter the list of your goals : </label>
+    <textarea rows="4" cols="50" id="goals"></textarea>
+    <button id="goalsBtn">Display goals </button>
+    <p id="goalsResult"></p>
+    
+    <label for="story">Enter a short story or annocdate : </label>
+    <textarea rows="4" cols="50" id="story"></textarea>
+    <button id="storyBtn">Display story </button>
+    <p id="storyResult"></p>
+
+    
+
+   
+
+    <script>
+      const BookList = document.getElementById("BookList")
+      const BookListBtn = document.getElementById("BookListBtn")
+      const BookListResult = document.getElementById("BookListResult")
+
+      BookListBtn.addEventListener("click", function(){
+        const  book = BookList.value
+        BookListResult.textContent =`Your favourite books : ${book}`
+      })
+
+      const recipie = document.getElementById("recipie")
+      const recipieBtn = document.getElementById("recipieBtn")
+      const recipieResult = document.getElementById("recipieResult")
+
+      recipieBtn.addEventListener("click", function(){
+        const  res= recipie.value
+
+        let a = res.split("\n\n")
+        
+        recipieResult.innerHTML =` <strong> ingreadients </strong> : <br> ${a[0]} <br><br> 
+        <strong>  instruction </strong> :<br> ${a[1]} 
+        `
+      })
+
+      const bio = document.getElementById("bio")
+      const bioBtn = document.getElementById("bioBtn")
+      const bioResult = document.getElementById("bioResult")
+
+      bioBtn.addEventListener("click", function(){
+        const  Bio = bio.value
+        bioResult.textContent =`My personal Bio is : ${Bio}.`
+      })
+
+
+      const goals = document.getElementById("goals")
+      const goalsBtn = document.getElementById("goalsBtn")
+      const goalsResult = document.getElementById("goalsResult")
+
+      goalsBtn.addEventListener("click", function(){
+        const  Goal = goals.value
+        goalsResult.textContent =`your list of goals: ${Goal}.`
+      })
+
+
+      const story = document.getElementById("story")
+      const storyBtn = document.getElementById("storyBtn")
+      const storyResult = document.getElementById("storyResult")
+
+      storyBtn.addEventListener("click", function(){
+        const  storyline = story.value
+        storyResult.textContent =`your short story and annocdate: ${storyline}.`
+      })
+
+
+   
+
+    </script>
+  </body>
+</html>

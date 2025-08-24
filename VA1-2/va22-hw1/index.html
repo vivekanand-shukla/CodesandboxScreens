@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- task 1 -->
+    <label for="">Program 1 : Select the music Genere :</label><br>
+    <input type="radio" name="genere" value="pop">Pop <br>
+    <input type="radio" name="genere" value="rock ">rock  <br>
+    <input type="radio" name="genere" value="hip hop">hip hop  <br>
+    <p id="Selectedgenere"></p>
+    <!-- task 2 -->
+    <label for="">Program 2 : Choose the language prefernce :</label><br>
+    <input type="radio" name="lunguage" value="English">English <br>
+    <input type="radio" name="lunguage" value="Spanish">Spanish <br>
+    <input type="radio" name="lunguage" value="French">French <br>
+    <p id="SelectlunguageResult"></p>
+    <!-- task 3  -->
+    <label for="">Program 3 : Select a job role : </label> <br>
+    <input type="radio" name="job" value="Developer">Developer <br>
+    <input type="radio" name="job" value="Designer">Designer <br>
+    <input type="radio" name="job" value="Manager">Manager <br>
+    <button id="JobBtn">Display Selected job role</button>
+    <p id="JobRes" ></p>
+    <!-- task 4  -->
+    <label for="">Program 4 : Choose a favourite Hobby  : </label> <br>
+    <input type="radio" name="Hobby" value="Reading">Reading <br>
+    <input type="radio" name="Hobby" value="Gardening">Gardening <br>
+    <input type="radio" name="Hobby" value="Sports">Sports <br>
+    <button id="HobbyBtn">Display Selected Hobby </button>
+    <p id="HobbyRes" ></p>
+    <!-- task 5  -->
+    <label for="">Program 5 : Select a clothing Style : </label> <br>
+    <input type="radio" name="cloths" value="Casual">Casual <br>
+    <input type="radio" name="cloths" value="Formal">Formal <br>
+    <input type="radio" name="cloths" value="Sporty">Sporty <br>
+    <button id="clothsBtn">Display Selected Style </button>
+    <p id="clothsRes" ></p>
+ <script>
+  // task 1
+  let genere = document.getElementsByName("genere")
+  let SelectedgenereResult = document.getElementById("Selectedgenere")
+   for(let i=0;i<genere.length;i++){
+   
+    genere[i].addEventListener('change',function(){
+    let   selectedGenereValue = document.querySelector('input[name="genere"]:checked').value
+      
+    SelectedgenereResult.textContent = `Selected Genere is : ${selectedGenereValue}`
+      
+    })
+   
+   }
+  // task 2
+  let lunguage =document.getElementsByName("lunguage")
+   let lunguageRes = document.getElementById("SelectlunguageResult")
+   console.log(lunguageRes)
+   for(let i=0;i<lunguage.length;i++){
+    lunguage[i].addEventListener('change' , function(){
+      let selectedLunguageValue = document.querySelector('input[name="lunguage"]:checked').value
+      lunguageRes.textContent =`Selected Language is ${selectedLunguageValue}`
+    })
+   }
+  // task 3
+  let jobRoleRadioInputs = document.getElementsByName("job") 
+  let jobRes = document.getElementById("JobRes")
+  let JobBtn = document.getElementById("JobBtn")
+  JobBtn.addEventListener('click',function(){
+    
+  let selectedJob = document.querySelector('input[name="job"]:checked')
+  if(selectedJob){
+
+    jobRes.textContent =`Selectd job : ${selectedJob.value}`
+  }else if(selectedJob ===null){
+
+    jobRes.textContent =`Selectd alteast one job first `
+  }
+  })
+  //  task 4
+  let HobbyRadioInputs = document.getElementsByName("Hobby") 
+  let HobbyRes = document.getElementById("HobbyRes")
+  let HobbyBtn = document.getElementById("HobbyBtn")
+  HobbyBtn.addEventListener('click',function(){
+    
+  let selectedHobby = document.querySelector('input[name="Hobby"]:checked')
+  if(selectedHobby){
+
+    HobbyRes.textContent =`Selectd Hobby : ${selectedHobby.value}`
+  }else if(selectedHobby ===null){
+
+    HobbyRes.textContent =`Selectd alteast one Hobby  `
+  }
+  })
+
+  //  task 5
+  let clothsInputs = document.getElementsByName("cloths") 
+  let clothsRes = document.getElementById("clothsRes")
+  let clothsBtn = document.getElementById("clothsBtn")
+  clothsBtn.addEventListener('click',function(){
+    
+  let selectedcloths = document.querySelector('input[name="cloths"]:checked')
+  if(selectedcloths){
+
+    clothsRes.textContent =`Selectd cloth : ${selectedcloths.value}`
+  }else if(selectedcloths ===null){
+
+    clothsRes.textContent =`Selectd alteast one cloth`
+  }
+  })
+
+ </script>
+  </body>
+</html>

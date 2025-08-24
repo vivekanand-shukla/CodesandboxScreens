@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- task 1  -->
+   <label for="">Choose a season : </label>
+   <select name="" id="Weather">
+    <option value="Summer">Summer</option>
+    <option value="Spring">Spring</option>
+    <option value="Fall">Fall</option>
+    <option value="Winter">Winter</option>
+   </select>
+   <button id="displayTipicalWeather">display Typical Weather</button>
+   <p class="" id="weatherRes"></p>
+   <!-- task 2  -->
+   <label for="">choose the movie genere</label>
+   <select name="" id="genre">
+    <option value="science friction">science friction</option>
+    <option value="Mystery">Mystery</option>
+    <option value="Rommance">Rommance</option>
+   </select>
+   <button id="movieBtn">Display movie recommendarion</button>
+   <p id="MovieRes"></p>
+
+   <!-- task 3  -->
+   <label for="">choose a pet</label>
+   <select name="" id="pet">
+     <option value="Dog">Dog</option>
+    <option value="cat">cat</option>
+    <option value="Fish">Fish</option>
+   </select>
+   <button id="petBtn">Display movie recommendarion</button>
+   <p id="petRes"></p>
+   
+   <!-- task 4  -->
+   <label for="">Choose the Musicl Instrument: </label>
+   <select name="" id="Instrument">
+    <option value="piano">piano</option>
+    <option value="Guitar">Guitar</option>
+    <option value="violion">violion</option>
+   </select>
+   <p id="insRes"></p>
+   <!-- task 5  -->
+   <label for="">Choose a planet : </label>
+   <select name="" id="planet">
+    <option value="Earth">Earth</option>
+    <option value="Mars">Mars</option>
+    <option value="jupiter">jupiter</option>
+   </select>
+   <button id="planetBtn">Display Planet Fact</button>
+   <p id="pltRes"></p>
+
+  </body>
+  <script>
+    // task 1 
+ let a = document.getElementById("Weather")
+ let b= document.getElementById("displayTipicalWeather")
+ let c= document.getElementById("weatherRes")
+ b.addEventListener("click",function(){
+let   avalue = a.value
+let obj = {
+  Summer:"Hot temprature and sunny days",
+  Spring:"mild tempratue and blooming flawers ",
+  Fall:"cooler temprature or falling lives",
+  Winter:"cold temprature and snowfall",
+}
+
+ c.textContent=`Typical Weather : ${obj[avalue]}`
+ })
+    // task 2
+ let genere = document.getElementById("genre")
+ let mbtn= document.getElementById("movieBtn")
+ let mRes= document.getElementById("MovieRes")
+ mbtn.addEventListener("click",function(){
+let   value = genere.value
+let obj = {
+  ["science friction"]:"Dune",
+  Mystery:"gone Girl",
+  Rommance:"pride and prejudice",
+ 
+}
+
+mRes.textContent=`Movie Recommendation : ${obj[value]}`
+ })
+//  task 3  
+let pet = document.getElementById("pet")
+ let petBtn= document.getElementById("petBtn")
+ let petRes= document.getElementById("petRes")
+ petBtn.addEventListener("click",function(){
+let   value = pet.value
+let obj = {
+  ["Dog"]:"Dog are known for its loyality and compininship",
+  cat:"cat are indepenent and very playful",
+  Fish:"Fish are very Diverse group of vertibrace",
+ 
+}
+
+petRes.textContent=`Fun fact : ${obj[value]}`
+})
+//  task 4 
+let Instrument = document.getElementById("Instrument")
+ let insRes= document.getElementById("insRes")
+
+ Instrument.addEventListener("click",function(){
+let   value = Instrument.value
+let obj = {
+  ["piano"]:"piano produces harmonius sound with Keys",
+  Guitar:"The guitar plays melodic tones with string",
+  violion:"the violen produces sweet and expressive sound",
+ 
+}
+
+insRes.textContent=`Sound : ${obj[value]}`
+})
+
+// task 5 
+let planet = document.getElementById("planet")
+ let planetBtn= document.getElementById("planetBtn")
+ let pltRes= document.getElementById("pltRes")
+ planetBtn.addEventListener("click",function(){
+let   value = planet.value
+let obj = {
+  ["Earth"]:"Earth is only planet for life. ",
+  Mars:"mars is often called as red planet due to color.",
+  jupiter:"juipter is the largest planet of solar system.",
+ 
+}
+
+pltRes.textContent=`planet fact : ${obj[value]}`
+})
+
+  </script>
+</html>

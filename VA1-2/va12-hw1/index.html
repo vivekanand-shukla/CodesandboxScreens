@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <label for="age">Enter your age :</label>
+    <input type="number" id="age">
+      <button id="validAgeBtn">valid age</button>
+      <p id="ageResult"></p>
+
+      <label for="animal">Enter your favourte anmal</label>
+      <input type="text" id="animal">
+      <button id="anmalBtn">Display Animal</button>
+      <p id="animalRes"></p>
+
+      <label for="color">Enter your favourite color : </label>
+      <input type="text" id="color">
+      <button id="colorBtn">Display color</button>
+      <p id="colorOutput"></p>
+
+      <label for="yesNo">yes no Question : </label>
+      <input type="text" id="yesNo">
+      <button id="yesNoM" >Display Massage</button>
+     <p id="yno"></p>
+
+     <label for="oe">Enter a number :</label>
+     <input type="text"  id="oe">
+     <button id="oeb">Check number</button>
+     <p id="oeo"></p>
+      
+  </body>
+  <script>
+    //task 1
+     let ageInput = document.getElementById("age");
+     let ageBtn = document.getElementById("validAgeBtn");
+     let result = document.getElementById("ageResult");
+     ageBtn.addEventListener("click", function() { 
+      let a =ageInput.value 
+      if(a>=18 && a<=100){
+       result.textContent ="it is a valid age "
+      }else{
+        
+        result.textContent ="it is a Invalid age "
+      }
+     }) 
+     //task 2
+     let animalInput = document.getElementById("animal")
+     let animalBtn = document.getElementById("anmalBtn")
+     let animalRes = document.getElementById("animalRes")
+
+     animalBtn.addEventListener('click', function(){
+       let a = animalInput.value
+       console.log(a)
+       animalRes.textContent =a
+     })
+
+     //task 3
+let color = document.getElementById("color")
+let colorBtn = document.getElementById("colorBtn")
+let colorOutput = document.getElementById("colorOutput")
+
+colorBtn.addEventListener('click', function(){
+       let a = color.value
+       console.log(a)
+       colorOutput.textContent =a
+     })
+ //task 4
+ let yesNo = document.getElementById("yesNo")
+  let yesNoM = document.getElementById("yesNoM")
+  let yno = document.getElementById("yno")
+  yesNoM.addEventListener('click',function(){
+    let a = yesNo.value
+    yno.textContent =`you said : '${a}'`
+  })
+   //task 5
+let oddornot = document.getElementById("oe")
+let oddBtn = document.getElementById("oeb")
+let oddOutput = document.getElementById("oeo")
+oddBtn.addEventListener('click',function(){
+  let a = oddornot.value
+  if(a%2==0){
+    oddOutput.textContent =`${a} is even`
+  }else{
+
+    oddOutput.textContent =`${a} is odd`
+  }
+})
+  </script>
+</html>

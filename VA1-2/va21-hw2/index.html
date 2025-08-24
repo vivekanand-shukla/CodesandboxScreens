@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- task 1  --> 
+    <label for="">Program 1: Tick the checkbox below to agree terms</label>
+    <br />
+    <input type="checkbox" name="terms" id="terms" />i agree to terms and
+    condition
+    <p id="termsRes"></p>
+
+    <!-- task  2 -->
+    <label for="">Program 2 : select multiple food Alergies : </label>
+    <input type="checkbox" name="allergies" value="Daily">Daily
+    <input type="checkbox" name="allergies" value="nuts">Nuts
+    <input type="checkbox" name="allergies" value="gluten">Gluten
+    <button id="allergiesBtn"> Display Selected food Alergies</button>
+    <p id="allergiesRes"></p>
+
+     <!-- task 3  -->
+     <label for="">Program 3 : choose multiple travel Destinaion : </label>
+     <input type="checkbox" name="destination" value="Paris">Paris 
+     <input type="checkbox" name="destination" value="new-York">new York
+     <input type="checkbox" name="destination" value="Tokyo">Tokyo
+     <button id="destinationBtn"> Display Selected travel Destination</button>
+     <p id="destinationRes"></p>
+
+     <!-- task 4  -->
+     <label for="">Program 4 : Select multiple Sports : </label>
+     <input type="checkbox" name="sports" value="Seccerr">Seccerr 
+     <input type="checkbox" name="sports" value="BasketBall">BasketBall
+     <input type="checkbox" name="sports" value="Tennis">Tennis
+     <button id="sportsBtn"> Display Selected Sports</button>
+     <p id="sportsRes"></p>
+
+
+     <!-- task 5  -->
+     <label for="">Program 5 : Choose multiple clothing colors : </label>
+     <input type="checkbox" name="color" value="black">black 
+     <input type="checkbox" name="color" value="White">White
+     <input type="checkbox" name="color" value="Blue">Blue
+     <button id="colorBtn"> Display Selected clothing Colors</button>
+     <p id="colorRes"></p>
+     <!-- task 6  -->
+     <label for="">Program 6 : Choose multiple Social media Platform : </label>
+     <input type="checkbox" name="SM" value="Facebook">Facebook
+     <input type="checkbox" name="SM" value="Twitter">Twitter
+     <input type="checkbox" name="SM" value="Instagram">Instagram
+     <button id="SMBtn"> Display Selected social media Platform</button>
+     <p id="SMRes"></p>
+
+
+
+
+
+    <script>
+//  task 1
+
+      let terms = document.getElementById("terms");
+      terms.addEventListener("change", function () {
+        if (terms.checked) {
+          termsRes.textContent = `User agree to terms and condition`;
+        } else {
+          termsRes.textContent = ``;
+        }
+      });
+// task 2
+let allergies= document.getElementsByName("allergies");
+let allergiesBtn= document.getElementById("allergiesBtn");
+let allergiesRes= document.getElementById("allergiesRes");
+
+allergiesBtn.addEventListener('click', function(){
+  let resArr =[]
+   for(let i=0;i<allergies.length;i++){
+    if(allergies[i].checked){
+      resArr.push(allergies[i].value)
+    }
+  }
+  if(resArr.length>0){     
+    allergiesRes.textContent =`selected food allergies :${resArr.join(" , ")} `
+  }else {
+   allergiesRes.textContent =`plese select atleast one alergy `
+  
+ }
+})
+// task 3
+let destination= document.getElementsByName("destination");
+let destinationBtn= document.getElementById("destinationBtn");
+let destinationRes= document.getElementById("destinationRes");
+
+destinationBtn.addEventListener('click', function(){
+  let resArr =[]
+   for(let i=0;i<destination.length;i++){
+    if(destination[i].checked){
+      resArr.push(destination[i].value)
+    }
+  }
+  if(resArr.length>0){     
+    destinationRes.textContent =`selected Travel Destination :${resArr.join(" , ")} `
+  }else {
+    destinationRes.textContent =`plese select atleast one distination  `
+  
+ }
+})
+// task 4 
+let sports= document.getElementsByName("sports");
+let sportsBtn= document.getElementById("sportsBtn");
+let sportsRes= document.getElementById("sportsRes");
+sportsBtn.addEventListener('click', function(){
+  let resArr =[]
+   for(let i=0;i<sports.length;i++){
+    if(sports[i].checked){
+      resArr.push(sports[i].value)
+    }
+  }
+  if(resArr.length>0){     
+    sportsRes.textContent =`selected Sports :${resArr.join(" , ")} `
+  }else {
+    sportsRes.textContent =`plese select atleast one Sports `
+  
+ }
+})
+// task 5
+let color= document.getElementsByName("color");
+let colorBtn= document.getElementById("colorBtn");
+let colorRes= document.getElementById("colorRes");
+colorBtn.addEventListener('click', function(){
+  let resArr =[]
+   for(let i=0;i<color.length;i++){
+    if(color[i].checked){
+      resArr.push(color[i].value)
+    }
+  }
+  if(resArr.length>0){     
+    colorRes.textContent =`selected colors :${resArr.join(" , ")} `
+  }else {
+    colorRes.textContent =`plese select atleast one color `
+  
+  }
+})
+// task 6
+let SM= document.getElementsByName("SM");
+let SMBtn= document.getElementById("SMBtn");
+let SMRes= document.getElementById("SMRes");
+SMBtn.addEventListener('click', function(){
+  let resArr =[]
+   for(let i=0;i<SM.length;i++){
+    if(SM[i].checked){
+      resArr.push(SM[i].value)
+    }
+  }
+  if(resArr.length>0){     
+    SMRes.textContent =`selected social media  :${resArr.join(" , ")} `
+  }else {
+    SMRes.textContent =`plese select atleast one  social media platform  `
+  
+  }
+})
+</script>
+  </body>
+</html>

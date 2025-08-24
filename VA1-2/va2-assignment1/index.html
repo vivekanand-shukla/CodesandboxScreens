@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>FeedBack Form</h1>
+    <form id="form">
+      <!-- task 1  -->
+      <label for="">Name : </label>
+      <input type="text" id="name">
+      <br><br>
+      <!-- task 2 -->
+      <label for="feedBack">Feedback: </label><br>
+    <textarea name="" id="feedBack" rows="6" cols="50"></textarea>
+    <br><br>
+    <!-- task 3 -->
+    <label for="">Rate our Services : </label><br>
+   <label for="Excellent"><input type="radio" name="rate" value="Excellent" id="Excellent">Excellent</label><br>
+   <label for="Good"><input type="radio" name="rate" value="Good" id="Good">Good</label><br>
+   <label for="Fair"><input type="radio" name="rate" value="Fair" id="Fair">Fair</label><br><br>
+   <!-- task 4  -->
+   <label for="">Select the topics of interest : </label><br>
+   <label for="Technology"><input type="checkBox" name="interest" value="Technology" id="Technology">Technology</label><br>
+   <label for="Travel"><input type="checkBox" name="interest" value="Travel" id="Travel">Travel</label><br>
+   <label for="Food"><input type="checkBox" name="interest" value="Food" id="Food">Food</label>
+      <br><br>
+<!-- task 5  -->
+<label for="">OverALL Experience</label>
+<select name="" id="over">
+  <option value="Very Satisfied">Very Satisfied</option>
+  <option value="Satisfied">Satisfied</option>
+  <option value="natural">natural</option>
+</select>
+      <br><br>
+      <input type="submit" value="submit">
+    </form>
+    <div id="res"></div>
+    <script>
+      let form = document.getElementById("form")
+   
+      form.addEventListener('submit',function(){
+        event.preventDefault();
+  let name =document.getElementById("name").value
+  let feedBack =document.getElementById("feedBack").value
+  let rate =document.querySelector("input[name='rate']:checked").value
+  let a =document.querySelectorAll("input[name='interest']:checked")
+  let overAll =document.getElementById("over").value
+let arr=[]
+for(let i= 0;i < a.length;i++){
+  arr.push(a[i].value)
+}
+  
+ 
+let abres= `<h2>FeedBack Submitted :</h2>
+      <p>Name : ${name}</p>
+      <p>FeedBack : ${feedBack}</p>
+      <p>Feedback Rating : ${rate}</p>
+      <p>Topics of interest : ${arr.join(", ")}</p>
+      <p>Over All Experience: ${overAll}</p>`
+
+
+let res = document.getElementById("res")
+res.innerHTML = abres
+      })
+    </script>
+  </body>
+</html>

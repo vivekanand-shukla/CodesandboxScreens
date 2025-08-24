@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <label for="nameInput">Enter your name : </label>
+    <input type="text" id="nameInput">
+    <button id="nameBtn">Show name</button>
+    <button id="changeStyle">Change Style</button>
+    <p id="nameRes"></p>
+    <script>
+      const nameInput = document.querySelector("#nameInput")
+      console.log(nameInput)
+      const nameBtn =document.querySelector("#nameBtn")
+      const nameRes =document.querySelector("#nameRes")
+      const styleBtn = document.querySelector('#changeStyle')
+      console.log(styleBtn)
+      
+
+      nameBtn.addEventListener("click",function(){
+        const nameValue =nameInput.value
+        nameRes.textContent = `Your name : ${nameValue}`
+      })
+
+      styleBtn.addEventListener("click", function(){
+        nameRes.style.color ="green"
+        nameRes.style.backgroundColor = "yellow"
+      })
+    </script>
+  </body>
+</html>

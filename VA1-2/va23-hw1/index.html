@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- task 1  -->
+ <label for="">Choose a movie Genre :</label>
+   <select name="" id="Movie-Genre">
+    <option value="Comady">Comady</option>
+    <option value="Drama">Drama</option>
+    <option value="Action">Action</option>
+   </select>
+   <p id="movieRes"></p>
+
+   <!-- task 2  -->
+   <label for="">Select a wheather Condition : </label>
+   <select name="" id="wheather">
+    <option value="Sunny" >Sunny</option>
+    <option value="Rainy" >Rainy</option>
+    <option value="Snowey">Snowey</option>
+   </select>
+  <p id="weatherRes"></p>
+  <!-- task 3  -->
+   <label for="">Select a language : </label>
+   <select name="" id="language">
+    <option value="Spanish">Spanish</option>
+    <option value="English">English</option>
+    <option value="French">French</option>
+
+   </select>
+   <button id="languageBtn">Display Greeting</button>
+   <p id="languageRes"></p>
+   <!-- task 4  -->
+   <label for="">Choose an Musical Instrument: </label>
+   <select name="" id="instrument">
+    <option value="Guitar">Guitar</option>
+    <option value="Violion">Violion</option>
+    <option value="Piano">Piano</option>
+   </select>
+   <button id="instrumentBtn">Display fun fact</button>
+   <p id="instrumentRes"></p>
+
+   <!-- task 5  -->
+   <label for="">Select a pet: </label>
+   <select name="" id="pet">
+    <option value="Dog">Dog</option>
+    <option value="Cat">Cat</option>
+    <option value="Fish">Fish</option>
+   </select>
+   <button id="petBtn">Display Pet Discription </button>
+   <p id="petRes"></p>
+
+
+   
+   <script>
+      // task 1
+ let movieOption = document.getElementById("Movie-Genre")
+ let MovieRes = document.getElementById("movieRes")
+ movieOption.addEventListener('change',function(){
+  let movieValue = movieOption.value
+
+  let obj ={
+    Comady:"SuperBad",
+    Drama:"The Shawshank Redemption" ,
+    Action : "The Dark night",
+
+
+  }
+  MovieRes.textContent = `recomended comady movie :  ${obj[movieValue]}`
+ })
+   
+  //  task 2 
+  let weather = document.getElementById("wheather")
+  let weatherRes = document.getElementById("weatherRes")
+
+  weather.addEventListener('change' ,function(){
+    let weatherValue = weather.value
+    let obj ={
+      Sunny:"picnic in park",
+      Rainy:"movie day indoor",
+      Snowey:"Build a snowman",
+    }
+    if(weatherValue =="Sunny" || weatherValue =="Snowey"){
+
+      weatherRes.textContent = `outdoor activity suggestion : ${obj[weatherValue]}`
+    }
+    else{
+    weatherRes.textContent = ` activity suggestion : ${obj[weatherValue]}`
+
+    }
+  })
+    //  task 3
+let languag =document.getElementById("language")
+let languageRes = document.getElementById("languageRes")
+let languageBtn =document.getElementById("languageBtn")
+languageBtn.addEventListener("click", function(){
+let  languageValue =languag.value
+let obj={
+  French :"Bonjour!",
+  English :"Hello!",
+  Spanish :"Hola!",
+
+}
+
+languageRes.textContent = `Common Greeting : ${obj[languageValue]}`
+}
+)
+// task 4 
+let  instrument = document.getElementById("instrument")
+let  instrumentBtn = document.getElementById("instrumentBtn")
+let  instrumentRes = document.getElementById("instrumentRes")
+instrumentBtn.addEventListener('click', function(){
+  instrumentValue = instrument.value
+  let obj ={
+    Guitar:"the guitar is one of the most popular instrument of the world",
+    Violion:"the violen is a string instrument known for its sweet sound",
+    Piano:"the piano has 88 keys",
+
+  }
+
+  instrumentRes.textContent = `fun fact : ${obj[instrumentValue]} `
+})
+// Task 5
+
+let  pet = document.getElementById("pet")
+let  petBtn = document.getElementById("petBtn")
+let  petRes = document.getElementById("petRes")
+petBtn.addEventListener('click', function(){
+  petValue = pet.value
+  let obj ={
+  Dog:"Dogs are loyal and friendly compainions ",
+  Cat:"cat are independent and playful ",
+  Fish:"fish is low mainantenence peacefull pet",
+
+  }
+
+  petRes.textContent = `Pet Discription : ${obj[petValue]} `
+})
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <label for="review">Enter our book Review : </label>
+<textarea name="" id="review"></textarea>
+<button id="reviewBtn">Display Book review</button>
+<p id="reviewRes"></p>
+
+    <label for="bio">Enter your personal bio : </label>
+<textarea name="" id="bio"></textarea>
+<button id="bioBtn">Display styled bio</button>
+<p id="bioRes"></p>
+
+    <label for="diary">Enter your personal diary entry : </label>
+<textarea name="" id="diary"></textarea>
+<button id="diaryBtn">Display Diary Entry </button>
+<p id="diaryRes"></p>
+
+
+    <script>
+  let review  = document.getElementById("review")
+  let reviewBtn = document.getElementById("reviewBtn")
+  let reviewRes = document.getElementById("reviewRes")
+  reviewBtn.addEventListener("click", function(){
+    let a = review.value
+    reviewRes.textContent = `Your Book Review : ${a}`
+  })
+  
+  let bio  = document.getElementById("bio")
+  let bioBtn  = document.getElementById("bioBtn")
+  let bioRes = document.getElementById("bioRes")
+  bioBtn.addEventListener("click", function(){
+  let a = bio.value
+  bioRes.innerHTML = `<i> ${a} </i>`
+  
+})
+  
+  let diary = document.getElementById("diary")
+  let diaryBtn = document.getElementById("diaryBtn")
+  let  diaryRes = document.getElementById("diaryRes")
+  
+  diaryBtn.addEventListener("click", function(){
+    let a = diary.value
+    const cuttentDate = new Date().toLocaleString()
+    diaryRes.innerHTML = `${cuttentDate} </br><p>${a}</p> `
+
+  })
+    </script>
+  </body>
+</html>
