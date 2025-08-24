@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calorie Details </title>
+</head>
+<body>
+    <header>
+        <p><a href="index.html">My Health</a></p>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calorieReport.html">Calories </a></li>
+          </ul>
+        </nav>
+      </header>
+
+    <main>
+        <h1>Calorie Details </h1>
+        <section id="output" ></section>
+    </main>
+    <footer>
+        <p>&copy; 2023 myHealthApp . All Rights Reserved.</p>
+    </footer>
+    <script>
+          let calorieEachMeal = [
+            {
+            id:1,
+            meal:"BreakFast",
+            item: "Dosa",
+            calories:"200 cal"
+          },
+            {
+            id:2,
+            meal:"lunch",
+            item: "mater paneer",
+            calories:"300 cal"
+          },
+            {
+            id:3,
+            meal:"Dinner",
+            item: "chole paneer",
+            calories:"400 cal"
+          },
+        ]
+    // find the id 
+
+let url =  new URL(window.location.href)
+ let urlId =url.searchParams.get("id")
+//  match the id 
+let result = null
+for(let i=0;i<calorieEachMeal.length;i++){
+if(urlId === String(calorieEachMeal[i].id)){
+  result = calorieEachMeal[i]
+  break;
+}
+}
+console.log("result:" , result  )
+// print to output 
+let a =document.getElementById('output')
+console.log(a)
+a.innerHTML+= `
+          <h2>${result.meal}</h2>
+          <ul>
+            <li>Meal :${result.meal}<li>
+            <li>item: ${result.item}<li>
+            <li>Calories : ${result.calories}<li>
+            </ul>
+`
+    </script>
+</body>
+</html>

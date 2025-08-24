@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Detils</title>
+  </head>
+  <body>
+    <header>
+      <a href="">Company Logo </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="employee.html">Employee Page</a></li>
+        </ul>
+      </nav>
+      <h1>Employee Details</h1>
+    </header>
+    <main>
+      <section id="employeeDetail"></section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Company Name. All rights reserved
+    </footer>
+    <script>
+      let employees = [
+        {
+          id: "1",
+          name: "john Doe",
+          title: "Software Developer ",
+          Department: "IT",
+        },
+        { id: "2", name: "jame Smith", title: "Desiner", Department: "Design" },
+        {
+          id: "3",
+          name: "Bob johnson",
+          title: "Project Manager ",
+          Department: "management",
+        },
+      ];
+      //  get the id froom url
+      function getParameterById(id) {
+        let url = new URL(window.location.href);
+
+        return url.searchParams.get(id);
+      }
+      let employeeID = getParameterById("id");
+      let emp;
+      // find the id in db
+      for (let i = 0; i < employees.length; i++) {
+        if (employees[i].id === employeeID) {
+          emp = employees[i];
+          console.log("emp", emp);
+          break;
+        }
+      }
+      //Display Details on the view
+      if (emp) {
+        let employeeDetailElement = document.getElementById("employeeDetail");
+        employeeDetailElement.innerHTML = `
+        <h2>${emp.name}</h2>
+        <ul>
+          <li>Name: ${emp.name}</li>
+        <li>degignation : ${emp.title}</li>
+        <li>Department:  ${emp.Department}</li>
+          </ul>
+        
+        `;
+      } else {
+        let employeeDetailElement = document.getElementById("employeeDetail");
+        employeeDetailElement.innerHTML = "employee not found";
+      }
+    </script>
+  </body>
+</html>

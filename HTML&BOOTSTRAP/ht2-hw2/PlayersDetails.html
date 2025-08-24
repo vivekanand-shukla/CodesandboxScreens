@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Players Detils </title>
+</head>
+<body>
+    <header>
+        <p><a href="index.html"> cricket Player's Database</a></p>
+        <nav>  
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="player.html">player</a></li>
+          <li><a href="Report.html">Report</a></li>
+        </ul>
+      </nav>
+      </header> 
+      <main>
+        <h1>Players Details </h1>
+        <section id="PD">
+
+
+        </section>
+      </main>
+       <footer>
+    <p>&copy; 2023 company name all rights reserved</p>
+  </footer>
+  <script>
+    const PlayersD =[
+        {
+            id:"1",
+       player :"Player 1",
+       country : "India",
+       role: "Batsman"
+    },
+    {
+          id:"2",
+       player :"Player 2",
+       country : "Austrilia ",
+       role: "Bowler" 
+
+    }
+    ]
+    let  url =new URL(window.location.href)
+       let a =  url.searchParams.get("id")
+console.log(a)
+let res =null
+for(let i=0 ;i<PlayersD.length;i++){
+if(a===PlayersD[i].id){
+ res =PlayersD[i];
+ break;
+}
+}
+console.log(res)
+let sec =document.getElementById("PD")
+console.log(sec)
+ sec.innerHTML +=   `
+ <h2>${res.player}</h2>
+  <p>Country ${res.country}</p>
+  <p>Role :  ${res.role}</p>
+ `
+  </script>
+</body>
+</html>

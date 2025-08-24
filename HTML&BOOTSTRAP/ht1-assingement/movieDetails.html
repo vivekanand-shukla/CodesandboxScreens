@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Detail</title>
+</head>
+<body>
+    <header>
+        <p><a href="index.html">movie Database</a></p>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="report.html">Report</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h1>Movie Details </h1>
+        <section>
+
+        </section>
+      </main>
+      <footer>
+        <p>&copy; 2023 company name all rights reserved</p>
+      </footer>
+      <script>
+        const movieDetails =[
+            {
+             id:"1",    
+            movie:"Movie 1",
+            genere:"action",
+            details:"This is an action movie",
+            released:"2023-1-15",
+            Director: "john doe"
+        },
+            {
+                id:"2", 
+            movie:"Movie 2",
+            genere:"Drama",
+            details:"a dramatic story of unfolds in movie ",
+            released:"2023-2-20",
+            Director: "jane smith"
+        },
+            {
+                id :"3", 
+            movie:"Movie 3",
+            genere:"Comady",
+            details:"get ready to laugh with comedy ",
+            released:"2023-5-20",
+            Director: "jane Walk"
+        }
+
+    ]
+    //  fetch the id 
+    let url = new URL(window.location.href) ;
+    let a =url.searchParams.get("id")
+    let mid
+    // find the id in db 
+    for(let i =0;i<movieDetails.length;i++){
+        if(movieDetails[i].id ===  a){
+          mid =  movieDetails[i];
+          break;
+        }
+    }
+         
+    if (mid) {
+  document.querySelector("section").innerHTML = `
+    <h2>${mid.movie}</h2>
+    <p> <strong> Genre:</strong>  ${mid.genere}</p>
+    <p> <strong>Details:</strong> ${mid.details}</p>
+    <p> <strong>Released Date :</strong> ${mid.released}</p>
+    <p> <strong>Director:</strong> ${mid.Director}</p>
+  `;
+}
+
+
+
+
+
+      </script>
+</body>
+</html>
