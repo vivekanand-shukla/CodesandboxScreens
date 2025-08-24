@@ -93,6 +93,8 @@
 12.https://codesandbox.io/p/sandbox/ir5-assignment1-97y7gt
 13.https://codesandbox.io/p/sandbox/ir5-assignment2-nxf9ph
 
+// REACT MCR 
+ 1. https://codesandbox.io/p/sandbox/ir3-mcr-mzhsfp
 
 
 
